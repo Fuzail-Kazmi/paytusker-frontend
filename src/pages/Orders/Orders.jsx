@@ -4,6 +4,7 @@ import { useGetCustomerOrdersQuery } from "../../features/api/api"
 import { Navbar } from "../../layouts"
 import { Freeze } from "../../components"
 import { FormatCurreny } from "../../utils"
+import { UserSidebar } from "../../layouts"
 
 const Orders = () => {
   const { data, isLoading } = useGetCustomerOrdersQuery()
@@ -16,15 +17,18 @@ const Orders = () => {
 
   if (pageLoading) return <Freeze />
   return (
-    <>
-      <Navbar title={"Your Orders"} />
-      <main className="order-page-main">
-        {orders?.map((val, index) => (
-          <OrdersCard key={index}
-            data={val} />
-        ))}
-      </main>
-    </>
+    <div style={{ display: "flex" }} className="sidebar-page">
+      <UserSidebar />
+      <div className="sidebar-page__content">
+        <Navbar title={"Your Orders"} />
+        <main className="order-page-main">
+          {orders?.map((val, index) => (
+            <OrdersCard key={index}
+              data={val} />
+          ))}
+        </main>
+      </div>
+    </div>
   )
 }
 

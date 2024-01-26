@@ -16,10 +16,9 @@ const Home = () => {
             const response = await axios.get(`${API_URL}/api/get-products`)
             if (response.status == 200) {
                 setProducts(response.data)
-                setLoading(false)
             }
-            else {
-            }
+
+            setLoading(false)
         } catch (error) {
             toast.error("Error")
             console.log(error)

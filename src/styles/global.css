@@ -116,3 +116,27 @@ body {
     font-weight: 500;
     margin-bottom: .5rem;
 }
+
+/* user pages */
+
+
+
+.user-sidebar {
+    display: none;
+
+}
+
+@media (min-width: 900px) {
+    .sidebar-page {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .user-sidebar {
+        display: block;
+    }
+
+    .sidebar-page__content {
+        flex: auto;
+    }
+}

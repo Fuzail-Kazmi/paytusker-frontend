@@ -1,9 +1,10 @@
-
 /* Sideabar */
 
 .user-sidebar {
-    min-height: calc(100vh - 3.3rem - 5rem);
-    background-color: lightblue;
+    /* min-height: calc(100vh - 3.3rem - 5rem); */
+    min-height: 100dvh;
+    /* background-color: lightblue; */
+    box-shadow: 0 0 5px #d7d7d7;
     max-width: 16rem;
     padding: 1rem .4rem;
 }
