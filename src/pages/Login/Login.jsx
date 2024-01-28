@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
-import { Freeze, Header } from "../../components"
+import { Freeze, } from "../../components"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useLoginUserMutation } from "../../features/api/api"
 import toast from "react-hot-toast"
 import { jwtDecode } from "jwt-decode"
+import { Header } from "../../layouts"
 
 const Login = () => {
     const userNameRef = useRef()

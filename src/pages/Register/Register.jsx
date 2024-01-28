@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Header } from "../../components"
+import { Header } from "../../layouts";
 import axios from "axios"
 import { API_URL } from "../../redux/store"
 import toast from "react-hot-toast"

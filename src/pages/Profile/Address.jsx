@@ -1,72 +1,62 @@
 import { ArrowLeft, Plus } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { UserSidebar } from "../../layouts"
+import { Header, UserSidebar } from "../../layouts"
+import { useGetUserAddressQuery } from "../../features/api/api"
 
 const Address = () => {
-    const [Address, setAddress] = useState(false)
+    const { data } = useGetUserAddressQuery()
+
     return (
-
-
         <div>
-            <div>
+            <Header />
+            <div className="sidebar-page ">
                 <UserSidebar />
-            </div>
-            {/* <header className="header-simple">
-                <section>
-                    <Link to={"/"}>
-                        <ArrowLeft />
-                    </Link>
-                </section>
-                <section>
-                    <div className="plain-header__heading">Address Book</div>
-                </section>
-                <section></section>
-            </header> */}
-
-            <div>
-                {Address ? <>
-                    <div className="address-cards-container">
-                        <AddressCard />
-                        <AddressCard />
-                        <AddressCard />
+                <div className="sidebar-page__content address-page">
+                    <div className="heading-md">Address Book</div>
+                    {data ? <div className="address-cards-container">
+                        {data.map((val, idx) => <AddressCard key={idx} data={val} />)}
                     </div>
 
-                </> :
-                    <div className="add-addr-container">
-                        <div className="flex-center h-100">
-                            <button className="btn btn-icon add-address__btn"
+                        : <div className="add-addr-container">
+                            <div className="flex-center h-100">
+                                <button className="btn btn-icon add-address__btn">
+                                    <Plus /> <span>Add New Address</span>
+                                </button>
+                            </div>
+                        </div>}
+                </div>
 
-                                onClick={() => setAddress(true)}
-                            >
-                                <Plus /> <span>Add New Address</span>
-                            </button>
-                        </div>
-                    </div>}
             </div>
+        </div >
 
-        </div>
     )
 }
 
 export default Address
 
 
-const AddressCard = () => {
+const AddressCard = ({ data }) => {
     return (
         <div className="address-card__wrapper">
             <div className="address-card__title">
-                Name of the customer OR Address  Title
+                {data?.address_title}
             </div>
             <div className="address-card__tags">
-                <div className="tag-sm">
+                {/* <div className="tag-sm">
                     Default Address
-                </div>
+                </div> */}
             </div>
-            <div className="address-card__info text-sm" >
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias facere atque nulla sit, accusamus aut reprehenderit libero ex esse corporis?
+            <div className="text-sm">
+                {data.city}, {data.country}
             </div>
 
+            <div className="address-card__info text-sm" >
+                {data?.address_line_1} {data?.address_line_2}
+            </div>
+            <div className="text-sm">
+                Street No: {data?.street_no}
+            </div>
         </div>
     )
 }

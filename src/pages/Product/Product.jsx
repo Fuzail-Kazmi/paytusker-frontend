@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { ArrowLeft, ArrowRight, BadgeCheck, Star } from "lucide-react"
 import { useEffect, useState } from "react"
-import { Header } from "../../components"
+import { Header } from "../../layouts";
 import axios from "axios"
 import { API_URL } from "../../redux/store"
 import { useParams } from "react-router-dom"
@@ -54,7 +54,7 @@ const Product = () => {
                     </section>
 
                     <section className="product-info__details">
-                        <div>
+                        <div className="product-info__details-wrapper">
                             <div className="product-name">
                                 {productData?.product_name}
                             </div>

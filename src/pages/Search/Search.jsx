@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom"
-import { Header } from "../../components"
+import { Header } from "../../layouts";
 import { useEffect } from "react"
 import { products } from "../../assets/data"
 import { ProductCard } from "../../components"

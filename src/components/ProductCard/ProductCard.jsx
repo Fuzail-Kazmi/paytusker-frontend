@@ -12,7 +12,7 @@ export const ProductCard = ({ product }) => {
             </Link>
             <div className="product-card__details">
                 <div className="card-details__upper">
-                    <div className="product-card__category text-sm ">{product.category || ""}</div>
+                    {/* <div className="product-card__category text-sm ">{product.category || "Test category"}</div> */}
                     <div className="product-card__name text-sm ">{String(product.product_name || product.name).slice(0, 40)} </div>
 
                 </div>

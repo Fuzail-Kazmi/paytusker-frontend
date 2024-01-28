@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
-import { Search, ShoppingCart, User2, MapPin } from "lucide-react"
+import { Search, ShoppingCart, User2 } from "lucide-react"
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom"
 import Logo from "../../assets/logo.png"
 import { useRef } from "react"
+import { getUserDetails } from "../../redux/slices/authSlice"
 
 export const Header = () => {
+    const isAuthenticated = getUserDetails()[1]
+
     return (
         <header className="page-header header-main__nav">
             <div className="header-left__section">
@@ -29,14 +32,15 @@ export const Header = () => {
                         <ShoppingCart />
                     </Link>
 
-                    <Link className="header-nav__link" to={"/login"}>
-                        <User2 />
-                    </Link>
 
-                    <Link className="header-nav__link" to={"/address"}>
-
-                        <MapPin />
-                    </Link>
+                    {isAuthenticated ?
+                        <Link className="header-nav__link" to={"/profile"}>
+                            <User2 />
+                        </Link> :
+                        <Link className="header-nav__link" to={"/login"}>
+                            <User2 />
+                        </Link>
+                    }
 
 
                 </nav>

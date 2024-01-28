@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { useGetCustomerOrdersQuery } from "../../features/api/api"
-import { Navbar } from "../../layouts"
+import { Header, Navbar } from "../../layouts"
 import { Freeze } from "../../components"
 import { FormatCurreny } from "../../utils"
 import { UserSidebar } from "../../layouts"
@@ -17,16 +17,21 @@ const Orders = () => {
 
   if (pageLoading) return <Freeze />
   return (
-    <div style={{ display: "flex" }} className="sidebar-page">
-      <UserSidebar />
-      <div className="sidebar-page__content">
-        <Navbar title={"Your Orders"} />
-        <main className="order-page-main">
-          {orders?.map((val, index) => (
-            <OrdersCard key={index}
-              data={val} />
-          ))}
-        </main>
+    <div>
+      <Header />
+      <div className="sidebar-page">
+        <UserSidebar />
+        <div className="sidebar-page__content">
+          <div className="heading-md">
+            Your Orders
+          </div>
+          <main className="order-page-main">
+            {orders?.map((val, index) => (
+              <OrdersCard key={index}
+                data={val} />
+            ))}
+          </main>
+        </div>
       </div>
     </div>
   )

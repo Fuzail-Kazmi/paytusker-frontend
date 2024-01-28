@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CategoryCard, Freeze, ProductCard } from "../../components";
 import axios from 'axios';
-import { Header } from "../../components";
+import { Header } from "../../layouts";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { API_URL } from "../../redux/store";
 import toast from "react-hot-toast";

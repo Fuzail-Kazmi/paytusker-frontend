@@ -292,3 +292,14 @@
     width: 100%;
     object-fit: contain;
 }
+
+/*  */
+.input-box {}
+
+.input-box__label {
+    margin-left: .25rem;
+    margin-bottom: .25rem;
+    font-size: var(--text-sm);
+}
+
+/* input-box__input */

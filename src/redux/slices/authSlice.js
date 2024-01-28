@@ -15,7 +15,7 @@ export const getUserDetails = () => {
     }
 
     if (user) { isAuthenticated = true }
-    
+
     return [user, isAuthenticated, accessToken, refreshToken]
 }
 
