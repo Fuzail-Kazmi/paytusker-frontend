@@ -263,7 +263,7 @@
 }
 
 .payment-method-card.active {
-    border: 2px solid #ffc800;
+    border: .15rem solid #ffc800;
 }
 
 .payment-method-card {
@@ -274,13 +274,14 @@
     padding: .6rem;
     border-radius: 5px;
     margin-bottom: .5rem;
-    border: 2px solid #e6e6e6;
+    box-shadow: 0 0 5px #e1e1e1;
+    border: .15rem solid transparent;
 }
 
+/* 
 .payment-method-card:hover {
     box-shadow: 0 0 10px #b3b3b3a8;
-
-}
+} */
 
 .pm-card__img-wrapper {
     height: 3rem;
