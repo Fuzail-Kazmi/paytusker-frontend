@@ -1,12 +1,19 @@
-import { ArrowLeft, Plus } from "lucide-react"
-import { useState } from "react"
-import { Link } from "react-router-dom"
 import { Header, UserSidebar } from "../../layouts"
 import { useGetUserAddressQuery } from "../../features/api/api"
+import { Freeze } from "../../components/Loaders/Freeze"
+
+
+{/* <div className="add-addr-container">
+    <div className="flex-center h-100">
+        <button className="btn btn-icon add-address__btn">
+            <Plus /> <span>Add New Address</span>
+        </button>
+    </div>
+</div> */}
 
 const Address = () => {
-    const { data } = useGetUserAddressQuery()
-
+    const { data, isLoading } = useGetUserAddressQuery()
+    if (isLoading) return <Freeze />
     return (
         <div>
             <Header />
@@ -17,16 +24,8 @@ const Address = () => {
                     {data ? <div className="address-cards-container">
                         {data.map((val, idx) => <AddressCard key={idx} data={val} />)}
                     </div>
-
-                        : <div className="add-addr-container">
-                            <div className="flex-center h-100">
-                                <button className="btn btn-icon add-address__btn">
-                                    <Plus /> <span>Add New Address</span>
-                                </button>
-                            </div>
-                        </div>}
+                        : <></>}
                 </div>
-
             </div>
         </div >
 

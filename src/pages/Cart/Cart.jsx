@@ -119,7 +119,7 @@ const OrderSummary = ({ total, sub_total, setPaymentMethod, paymentMethod, Check
                 </div>
             </div>
             <div>
-                {/* {paymentMethods.map((val, i) =>
+                {paymentMethods.map((val, i) =>
                     <div key={i} onClick={() => setPaymentMethod(val.id)} >
                         <PaymentMethodCard
                             img={val.image}
@@ -127,7 +127,7 @@ const OrderSummary = ({ total, sub_total, setPaymentMethod, paymentMethod, Check
                             active={paymentMethod === val.id ? true : false}
                         />
                     </div>
-                )} */}
+                )}
             </div>
             <div>
                 <button className="btn btn-full btn-primary or-sum-btn-checkt"
@@ -142,6 +142,7 @@ const OrderSummary = ({ total, sub_total, setPaymentMethod, paymentMethod, Check
 export const PaymentMethodCard = ({ name, img, active }) => {
     return (
         <div className={`payment-method-card ${active ? "active" : ""}`}>
+            <div className="payment-method-card__check"></div>
             <div className="pm-card__img-wrapper">
                 <img src={img} alt="" />
             </div>
@@ -151,15 +152,13 @@ export const PaymentMethodCard = ({ name, img, active }) => {
     )
 }
 
-const CartItemCard = ({ price, name, qty, image, id, editQty, setPageLoading }) => {
+const CartItemCard = ({ price, name, qty, image, id, editQty }) => {
     const updateQty = (id, action) => {
-        // setPageLoading(true)
         const data = {
             cart_item_id: id,
             action: action
         }
         editQty(data)
-        // setPageLoading(false)
     }
     return (
         <div className="cart-item-card d-flex ">
@@ -173,7 +172,7 @@ const CartItemCard = ({ price, name, qty, image, id, editQty, setPageLoading }) 
                     <div className="text-sm">{name || ""}</div>
                 </div>
 
-                <div className="d-flex justify-content-between align-items-center w-100">
+                <div className="d-flex justify-content-between align-items-center">
                     <div className="font-medium cart-item-price">{FormatCurreny(price) || ""}</div>
 
                     <div className="remove-cart-item">
