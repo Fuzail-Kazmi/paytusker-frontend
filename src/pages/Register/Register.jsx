@@ -3,6 +3,7 @@ import { Header } from "../../layouts";
 import axios from "axios"
 import { API_URL } from "../../redux/store"
 import toast from "react-hot-toast"
+import { useState } from "react";
 
 const Register = () => {
     const submitForm = (e) => {
@@ -18,17 +19,23 @@ const Register = () => {
             password: data.get("password"),
         }
 
-
-        console.log(reqBody)
+        console.log("Registers")
         registerUser(reqBody)
     }
     const registerUser = async (payload) => {
-        const req = await axios.post(`${API_URL}/api/register/`, payload)
-        if (req.status === 200) {
-            toast.success("User Created")
+        try {
+            const req = await axios.post(`${API_URL}/api/register/`, payload)
+            if (req.status === 200) {
+                toast.success("User Created")
+            }
+
+        } catch (error) {
+            toast.error(error.response.data)
+            console.log(error)
+            setFormMsg(error?.response?.data)
         }
     }
-    const FormMsg = ""
+    const [FormMsg, setFormMsg] = useState("")
 
     return (
         <div>

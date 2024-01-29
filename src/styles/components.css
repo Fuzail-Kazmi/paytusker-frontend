@@ -274,29 +274,19 @@
     padding: .6rem;
     border-radius: 5px;
     margin-bottom: .5rem;
-    border: 2px solid #e6e6e6;
+    box-shadow: 0 0 10px #ececec;
+
 }
 
 .payment-method-card:hover {
-    box-shadow: 0 0 10px #b3b3b3a8;
-
+    box-shadow: 0 0 10px #ececec;
 }
 
 .payment-method-card__check {
-    height: 5px;
-    width: 5px;
     border-radius: 50%;
-    background-color: #000;
 }
 
-.payment-method-card.active .payment-method-card__check {
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
-    background-color: #000;
-}
-
-.payment-method-card__check {}
+/* .payment-method-card__check {} */
 
 .pm-card__img-wrapper {
     height: 3rem;
