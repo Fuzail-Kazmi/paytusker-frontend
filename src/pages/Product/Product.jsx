@@ -17,7 +17,7 @@ const Product = () => {
     const [pageLoading, setPageLoading] = useState(true)
     const navigate = useNavigate();
     const { id } = useParams();
-    const [addItemToCart] = useAddToCartMutation();
+    const [addItemToCart, { isSuccess, isLoading }] = useAddToCartMutation();
 
     const getProductDetail = async () => {
         try {
@@ -37,10 +37,18 @@ const Product = () => {
         getProductDetail()
     }, [])
 
+    useEffect(() => {
+        if (isLoading) {
+            setPageLoading(isLoading)
+        }
+
+        if (isSuccess) {
+            navigate("/cart")
+        }
+    }, [isLoading, isSuccess])
+
     const addToCart = async (product_id) => {
-        setPageLoading(true)
         addItemToCart({ product_id: product_id })
-        navigate("/cart")
     }
 
     if (pageLoading) return <Freeze />

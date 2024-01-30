@@ -79,18 +79,24 @@ const Cart = () => {
                     <div className="ci-w2">
 
                         <div className="cart-items__container">
-                            {cartData?.items?.map((item, index) =>
-                                <CartItemCard key={index}
-                                    price={item.rate}
-                                    qty={item.qty}
-                                    name={item.product_name}
-                                    image={item.cover_image}
-                                    editQty={editQty}
-                                    id={item.id}
-                                    setPageLoading={setPageLoading}
-                                />
-
-                            )}
+                            {
+                                cartData && cartData.items?.length > 0 ?
+                                    cartData.items.map((item, index) =>
+                                        <CartItemCard key={index}
+                                            price={item.rate}
+                                            qty={item.qty}
+                                            name={item.product_name}
+                                            image={item.cover_image}
+                                            editQty={editQty}
+                                            id={item.id}
+                                            setPageLoading={setPageLoading}
+                                        />
+                                    )
+                                    : <div >
+                                        {/* <br /> */}
+                                        <h3>Your cart is empty</h3>
+                                    </div>
+                            }
                         </div>
                     </div>
                 </div>
