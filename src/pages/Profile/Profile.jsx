@@ -2,8 +2,10 @@ import { useGetUserDetailsQuery } from "../../features/api/api"
 import { UserSidebar, Header } from "../../layouts"
 import { Freeze } from "../../components"
 import { User } from "lucide-react"
-
+import { LogOut } from "../../redux/slices/authSlice"
+import { useDispatch } from "react-redux"
 const Profile = () => {
+  const dispatch = useDispatch()
   const userProfileFields = [
     {
       "fieldname": "first_name",
@@ -71,6 +73,20 @@ const Profile = () => {
               )}
 
             </form>
+            <br />
+            <br />
+            <div>
+              <button
+                style={{
+                  color: "#fff",
+                  backgroundColor: "#ff5a5a"
+                }}
+                onClick={() => {
+                  dispatch(LogOut())
+                  window.location.reload()
+                }}
+                className="btn btn-sm">Logout</button>
+            </div>
           </div>
 
         </div>

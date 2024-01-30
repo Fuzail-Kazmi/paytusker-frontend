@@ -79,18 +79,24 @@ const Cart = () => {
                     <div className="ci-w2">
 
                         <div className="cart-items__container">
-                            {cartData?.items?.map((item, index) =>
-                                <CartItemCard key={index}
-                                    price={item.rate}
-                                    qty={item.qty}
-                                    name={item.product_name}
-                                    image={item.cover_image}
-                                    editQty={editQty}
-                                    id={item.id}
-                                    setPageLoading={setPageLoading}
-                                />
-
-                            )}
+                            {
+                                cartData && cartData.items?.length > 0 ?
+                                    cartData.items.map((item, index) =>
+                                        <CartItemCard key={index}
+                                            price={item.rate}
+                                            qty={item.qty}
+                                            name={item.product_name}
+                                            image={item.cover_image}
+                                            editQty={editQty}
+                                            id={item.id}
+                                            setPageLoading={setPageLoading}
+                                        />
+                                    )
+                                    : <div >
+                                        {/* <br /> */}
+                                        <h3>Your cart is empty</h3>
+                                    </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -154,11 +160,8 @@ export const PaymentMethodCard = ({ name, img, active }) => {
 
 const CartItemCard = ({ price, name, qty, image, id, editQty }) => {
     const updateQty = (id, action) => {
-        const data = {
-            cart_item_id: id,
-            action: action
-        }
-        editQty(data)
+        const payload = { cart_item_id: id, action: action }
+        editQty(payload)
     }
     return (
         <div className="cart-item-card d-flex ">
@@ -176,7 +179,6 @@ const CartItemCard = ({ price, name, qty, image, id, editQty }) => {
                     <div className="font-medium cart-item-price">{FormatCurreny(price) || ""}</div>
 
                     <div className="remove-cart-item">
-
                         <Trash2
                             onClick={() => updateQty(id, "remove")}
                         />
