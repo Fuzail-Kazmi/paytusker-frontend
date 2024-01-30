@@ -148,6 +148,7 @@ const OrderSummary = ({ total, sub_total, setPaymentMethod, paymentMethod, Check
 export const PaymentMethodCard = ({ name, img, active }) => {
     return (
         <div className={`payment-method-card ${active ? "active" : ""}`}>
+            <div className="payment-method-card__check"></div>
             <div className="pm-card__img-wrapper">
                 <img src={img} alt="" />
             </div>

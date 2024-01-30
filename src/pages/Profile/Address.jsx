@@ -1,8 +1,6 @@
-import { ArrowLeft, Plus } from "lucide-react"
-import { useState } from "react"
-import { Link } from "react-router-dom"
 import { Header, UserSidebar } from "../../layouts"
 import { useGetUserAddressQuery } from "../../features/api/api"
+import { Freeze } from "../../components/Loaders/Freeze"
 
 const Address = () => {
     const { data } = useGetUserAddressQuery()
@@ -26,7 +24,6 @@ const Address = () => {
                             </div>
                         </div>}
                 </div>
-
             </div>
         </div >
 
